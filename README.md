@@ -1,4 +1,4 @@
-# ⚛️ React Courses - Fernando Herrera (2025)
+# ⚛️ React Course - Fernando Herrera (2025)
 
 This repository is my personal workspace and reference area for all the exercises and projects developed during the **Udemy** course: **"React: De cero a experto - Edición 2025"** taught by instructor **Fernando Herrera**.
 
@@ -61,4 +61,4 @@ To run any project locally, follow these steps:
 
 This project is for educational and reference purposes only.
 
-[*(Optional: Replace "YOUR\_USERNAME" with your GitHub username.)*](https://github.com/Jommp/react-2025-fernando-herrera-udemy)
+[*Repository*](https://github.com/Jommp/react-2025-fernando-herrera-udemy)

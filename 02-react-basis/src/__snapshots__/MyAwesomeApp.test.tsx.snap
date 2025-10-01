@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FirstStepsApp > should match snapshot 1`] = `
+<div>
+  <h1>
+     
+    Chema
+     
+  </h1>
+  <h3
+    data-testid="last-name"
+  >
+     
+    MP
+     
+  </h3>
+  <p>
+    The Last Of Us, Gears of war 3, Dofus
+  </p>
+  <p>
+    4
+  </p>
+  <h1>
+    No activo
+  </h1>
+  <p
+    style="background-color: rgb(250, 250, 250); border-radius: 20px; padding: 10px; margin-top: 30px;"
+  >
+    {"zipCode":"77516","country":"Mexico"}
+  </p>
+</div>
+`;

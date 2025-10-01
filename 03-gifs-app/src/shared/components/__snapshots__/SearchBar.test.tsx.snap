@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchBar > should render SearchBar correctly 1`] = `
+<div>
+  <section
+    class="search-container"
+  >
+    <input
+      placeholder="Buscar"
+      type="text"
+    />
+    <button>
+      Buscar
+    </button>
+  </section>
+</div>
+`;

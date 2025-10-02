@@ -12,7 +12,7 @@ export const TrafficLightWithHook = () => {
   return (
     <div className='bg-gradient'>
       <div className='flex flex-col items-center space-y-8'>
-        <h1 className='text-white text-3xl font-thin'>Semáforo con UseTrafficLightHooooooook</h1>
+        <h1 className='text-white text-3xl font-thin'>Semáforo con UseTrafficLightHook</h1>
         <h2 className='text-white text-xl'>{ countdown }</h2>
 
         <div className='w-64 bg-gray-700 rounded-full h-2'>

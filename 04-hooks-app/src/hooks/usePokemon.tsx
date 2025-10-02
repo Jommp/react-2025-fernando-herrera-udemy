@@ -38,5 +38,8 @@ export const usePokemon = ({ id } : Props) => {
     // Properties
     isLoading,
     pokemon,
+
+    // Computed
+    formattedId: id.toString().padStart(3, '0'),
   };
 };

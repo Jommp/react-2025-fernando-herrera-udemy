@@ -52,10 +52,13 @@ export const useTrafficLight = (initialColor: TrafficLightColor = 'red') => {
   }, [countdown, light]);
   
   return {
-    light,
+    // Properties
     countdown,
 
-    colors,
-    INITIAL_COUNTDOWN
+    // Computed
+    percentageWidth: countdown/INITIAL_COUNTDOWN * 100,
+    redLightClass: light === 'red' ? colors.red : 'bg-gray-500',
+    yellowLightClass: light === 'yellow' ? colors.yellow : 'bg-gray-500',
+    greenLightClass: light === 'green' ? colors.green : 'bg-gray-500',
   };
 };

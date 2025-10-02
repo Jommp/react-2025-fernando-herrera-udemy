@@ -1,56 +1,12 @@
-import { useEffect, useState } from 'react';
-
-const colors = {
-  red: 'bg-red-500 animate-pulse',
-  yellow: 'bg-yellow-500 animate-pulse',
-  green: 'bg-green-500 animate-pulse'
-};
-
-type TrafficLightColor = keyof typeof colors;
-
-const INITIAL_COUNTDOWN = 5;
+import { useTrafficLight } from '../hooks/useTrafficLight';
 
 export const TrafficLightWithHook = () => {
-  const [light, setLight] = useState<TrafficLightColor>('red');
-  const [countdown, setCountdown] = useState(INITIAL_COUNTDOWN);
-
-  useEffect(() => {
-    if(countdown === 0) return;
-
-    const intervalId = setInterval(() => {
-      setCountdown((prev => prev - 1));
-    }, 1000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-
-  }, [countdown]);
-
-  useEffect(() => {
-    if(countdown > 0) return;
-
-    setCountdown(INITIAL_COUNTDOWN);
-
-    if (light === 'red') {
-      setLight('green');
-
-      return;
-    }
-
-    if (light === 'yellow') {
-      setLight('red');
-
-      return;
-    }
-
-    if (light === 'green') {
-      setLight('yellow');
-
-      return;
-    }
-  }, [countdown, light]);
-  
+  const {
+    countdown,
+    light,
+    colors,
+    INITIAL_COUNTDOWN
+  } = useTrafficLight();
   
   return (
     <div className='bg-gradient'>

@@ -42,8 +42,9 @@ export const TasksApp = () => {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    console.log('Presiono enter');
+    if (e.key !== 'Enter') return;
 
+    addTodo();
   };
 
   const completedCount = todos.filter((todo) => todo.completed).length;

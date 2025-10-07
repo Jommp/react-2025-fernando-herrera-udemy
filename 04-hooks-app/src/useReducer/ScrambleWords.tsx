@@ -46,8 +46,10 @@ export const ScrambleWords = () => {
 
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [scrambledWord, setScrambledWord] = useState(scrambleWord(currentWord));
+
   const [guess, setGuess] = useState('');
   const [points, setPoints] = useState(0);
+
   const [errorCounter, setErrorCounter] = useState(0);
   const [maxAllowErrors, setMaxAllowErrors] = useState(3);
 
@@ -56,23 +58,53 @@ export const ScrambleWords = () => {
 
   const [isGameOver, setIsGameOver] = useState(false);
 
-  const handleGuessSubmit = (e: React.FormEvent) => {
-    // Previene el refresh de la página
-    e.preventDefault();
-    // Implementar lógica de juego
-    console.log('Intento de adivinanza:', guess, currentWord);
+  const handleNextWord = () => {
+    const newWords = words.slice(1);
 
+    setWords(newWords);
+    setCurrentWord(newWords[0]);
+    setScrambledWord(scrambleWord(newWords[0]));
+
+    setGuess('');
+  };
+
+  const handleGuessSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (guess === currentWord) {
+      setPoints(prev => prev + 1);
+      handleNextWord();
+
+      return;
+    }
+
+    setErrorCounter(prev => prev + 1);
+    setGuess('');
+
+    if (errorCounter + 1 >= maxAllowErrors) {
+      setIsGameOver(true);
+    }
   };
 
   const handleSkip = () => {
-    console.log('Palabra saltada');
+    if (skipCounter >= maxSkips) return;
 
-    
+    setSkipCounter(prev => prev + 1);
+    handleNextWord();
   };
 
   const handlePlayAgain = () => {
-    console.log('Jugar de nuevo');
-    
+    const updatedArray = shuffleArray(GAME_WORDS);
+
+    setWords(updatedArray);
+    setCurrentWord(updatedArray[0]);
+    setScrambledWord(scrambleWord(updatedArray[0]));
+
+    setGuess('');
+    setPoints(0);
+    setErrorCounter(0);
+    setSkipCounter(0);
+    setIsGameOver(false);
   };
 
   //! Si ya no hay palabras para jugar, se muestra el mensaje de fin de juego

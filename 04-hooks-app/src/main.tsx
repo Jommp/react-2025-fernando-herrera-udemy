@@ -7,7 +7,8 @@ import { createRoot } from 'react-dom/client';
 // import { TrafficLightWithHook } from './useEffect/TrafficLightWithHook';
 // import { PokemonPage } from './examples/PokemonPage';
 // import { FocusScreen } from './useRef/FocusScreen';
-import { TasksApp } from './useReducer/TaskApp';
+// import { TasksApp } from './useReducer/TaskApp';
+import { ScrambleWords } from './useReducer/ScrambleWords';
 
 import './index.css';
 
@@ -19,7 +20,8 @@ createRoot(document.getElementById('root')!).render(
     {/* <TrafficLightWithHook /> */}
     {/* <PokemonPage /> */}
     {/* <FocusScreen /> */}
-
-    <TasksApp />
+    {/* <TasksApp /> */}
+    
+    <ScrambleWords />
   </StrictMode>,
 );

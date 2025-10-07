@@ -25,7 +25,7 @@ export const getTasksInitialState = (): TaskState => {
   };
 };
 
-export const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
+export const tasksReducer = (state: TaskState, action: TaskAction): TaskState => {
   switch(action.type) {
     case 'ADD_TODO': {
       const newTodo: Todo = {

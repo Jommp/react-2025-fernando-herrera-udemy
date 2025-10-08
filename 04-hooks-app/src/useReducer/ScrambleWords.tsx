@@ -53,7 +53,9 @@ export const ScrambleWords = () => {
   };
 
   const handleGuessSubmit = (e: React.FormEvent) => {
-    // e.preventDefault();
+    e.preventDefault();
+
+    dispatch({ type: 'CHECK_ANSWER' });
 
     // if (guess === currentWord) {
     //   setPoints(prev => prev + 1);
@@ -170,8 +172,7 @@ export const ScrambleWords = () => {
                     type="text"
                     value={guess}
                     onChange={(e) =>
-                      // setGuess(e.target.value.toUpperCase().trim())
-                      console.log(e.target.value)
+                      dispatch({ type: 'SET_GUESS', payload: e.target.value })
                     }
                     placeholder="Ingresa tu palabra..."
                     className="text-center text-lg font-semibold h-12 border-2 border-indigo-200 focus:border-indigo-500 transition-colors"

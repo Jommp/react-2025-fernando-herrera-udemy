@@ -2,7 +2,7 @@
 // Es necesario componentes de Shadcn/ui
 // https://ui.shadcn.com/docs/installation/vite
 
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -26,73 +26,18 @@ export const ScrambleWords = () => {
     totalWords
   } = state;
 
-  // const [words, setWords] = useState(shuffleArray(GAME_WORDS));
-
-  // const [currentWord, setCurrentWord] = useState(words[0]);
-  // const [scrambledWord, setScrambledWord] = useState(scrambleWord(currentWord));
-
-  // const [guess, setGuess] = useState('');
-  // const [points, setPoints] = useState(0);
-
-  // const [errorCounter, setErrorCounter] = useState(0);
-  // const [maxAllowErrors, setMaxAllowErrors] = useState(3);
-
-  // const [skipCounter, setSkipCounter] = useState(0);
-  // const [maxSkips, setMaxSkips] = useState(3);
-
-  // const [isGameOver, setIsGameOver] = useState(false);
-
-  const handleNextWord = () => {
-    // const newWords = words.slice(1);
-
-    // setWords(newWords);
-    // setCurrentWord(newWords[0]);
-    // setScrambledWord(scrambleWord(newWords[0]));
-
-    // setGuess('');
-  };
-
   const handleGuessSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     dispatch({ type: 'CHECK_ANSWER' });
-
-    // if (guess === currentWord) {
-    //   setPoints(prev => prev + 1);
-    //   handleNextWord();
-
-    //   return;
-    // }
-
-    // setErrorCounter(prev => prev + 1);
-    // setGuess('');
-
-    // if (errorCounter + 1 >= maxAllowErrors) {
-    //   setIsGameOver(true);
-    // }
   };
 
   const handleSkip = () => {
     dispatch({ type: 'SKIP_WORD' });
-    // if (skipCounter >= maxSkips) return;
-
-    // setSkipCounter(prev => prev + 1);
-    // handleNextWord();
   };
 
   const handlePlayAgain = () => {
     dispatch({ type: 'START_NEW_GAME', payload: getInitialState()});
-    // const updatedArray = shuffleArray(GAME_WORDS);
-
-    // setWords(updatedArray);
-    // setCurrentWord(updatedArray[0]);
-    // setScrambledWord(scrambleWord(updatedArray[0]));
-
-    // setGuess('');
-    // setPoints(0);
-    // setErrorCounter(0);
-    // setSkipCounter(0);
-    // setIsGameOver(false);
   };
 
   //! Si ya no hay palabras para jugar, se muestra el mensaje de fin de juego

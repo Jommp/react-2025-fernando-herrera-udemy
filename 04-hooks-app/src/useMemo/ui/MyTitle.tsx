@@ -1,8 +1,10 @@
+import React from 'react';
+
 interface Props {
   title: string;
 }
 
-export const MyTitle = ({ title }: Props) => {
+export const MyTitle = React.memo(({ title }: Props) => {
   console.log('Re-render title');
 
   return (
@@ -10,4 +12,4 @@ export const MyTitle = ({ title }: Props) => {
       {title}
     </h1>
   );
-};
+});

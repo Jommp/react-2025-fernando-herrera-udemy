@@ -1,8 +1,11 @@
+import { memo } from 'react';
+
 interface Props {
   subtitle: string;
+  apiCall: (subtitle: string) => void
 }
 
-export const MySubtitle = ({ subtitle }: Props) => {
+export const MySubtitle = memo(({ subtitle, apiCall }: Props) => {
   console.log('Re-render subtitle');
 
   return (
@@ -11,9 +14,12 @@ export const MySubtitle = ({ subtitle }: Props) => {
         { subtitle }
       </h3>
 
-      <button className='px-1 py-0.5 bg-indigo-500 text-white rounded-md'>
+      <button
+        className='px-1 py-0.5 bg-indigo-500 text-white rounded-md cursor-pointer'
+        onClick={() => apiCall(subtitle)}
+      >
         Llamar a función
       </button>
     </>
   );
-};
+});

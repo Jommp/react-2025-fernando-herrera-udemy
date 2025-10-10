@@ -1,7 +1,15 @@
-import { useEffect } from 'react';
-import { getUserAction } from './api/get-user.action';
+import { use, type Usable } from 'react';
+import { type User } from './api/get-user.action';
 
-export const ClientInformation = ({ id }: { id: number }) => {
+interface Props {
+  getUser: Usable<User>
+}
+
+// const userPromise = getUserAction(1);
+
+export const ClientInformation = ({ getUser }: Props) => {
+  const user = use(getUser);
+
   // const user = await getUserAction(id);
 
   // useEffect(() => {
@@ -9,16 +17,16 @@ export const ClientInformation = ({ id }: { id: number }) => {
   // }, [id]);
 
   return (
-    <div>
-      <h2 className=''>
-        Chema - #43
+    <div className='bg-gradient flex flex-col gap-4'>
+      <h2 className='text-4xl font-thin text-white'>
+        { user.name} - #{user.id}
       </h2>
 
-      <p>
-        Cancún, México
+      <p className='text-white text-2xl'>
+        { user.location }
       </p>
-      <p>
-        React Developer
+      <p className='text-white text-2xl'>
+        { user.job }
       </p>
     </div>
   );

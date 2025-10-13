@@ -6,15 +6,15 @@ import { AboutPage } from '../pages/about/AboutPage';
 export const appRouter = createBrowserRouter([
   {
     path: '/',
-    element: <AuthPage />
+    element: <AboutPage />
   },
   {
     path: '/profile',
     element: <ProfilePage />
   },
   {
-    path: '/about',
-    element: <AboutPage />
+    path: '/auth',
+    element: <AuthPage />
   },
   {
     path: '*',

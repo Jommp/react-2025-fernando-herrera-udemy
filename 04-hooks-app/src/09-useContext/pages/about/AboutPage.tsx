@@ -7,7 +7,7 @@ export const AboutPage = () => {
         Página sobre mi
       </h1>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 mt-4">
         <Link className="hover:text-blue-500 underline" to="/profile">
           Perfil
         </Link>

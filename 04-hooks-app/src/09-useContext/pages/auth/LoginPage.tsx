@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Link } from 'react-router';
 
-export const AuthPage = () => {
+export const LoginPage = () => {
   return (
     <div className="flex flex-col items-center min-h-screen">
       <h1 className="text-4xl font-bold">Iniciar sesión</h1>

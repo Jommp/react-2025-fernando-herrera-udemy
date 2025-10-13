@@ -12,7 +12,7 @@ export const AboutPage = () => {
           Perfil
         </Link>
 
-        <Link className="hover:text-blue-500 underline" to="/auth">
+        <Link className="hover:text-blue-500 underline" to="/login">
           Iniciar sesión
         </Link>
       </div>

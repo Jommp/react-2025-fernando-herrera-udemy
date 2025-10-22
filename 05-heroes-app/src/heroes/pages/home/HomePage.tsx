@@ -82,7 +82,7 @@ export const HomePage = () => {
           <TabsContent value="all">
             <h2>Todos</h2>
 
-            <HeroesGrid />
+            <HeroesGrid heroes={heroesResponse?.heroes} />
           </TabsContent>
 
           <TabsContent value="favorites">

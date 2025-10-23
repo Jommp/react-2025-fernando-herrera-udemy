@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 
 import { HeroesLayout } from '@/heroes/layouts/HeroesLayout';
 import { HomePage } from '../heroes/pages/home/HomePage';
@@ -27,6 +27,10 @@ export const appRoutes = createBrowserRouter([
         path: 'search',
         element: <SearchPage />
       },
+      {
+        path: '*',
+        element: <Navigate to="/" />
+      }
     ]
   },
   {

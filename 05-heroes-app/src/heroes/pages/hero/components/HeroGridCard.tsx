@@ -1,3 +1,7 @@
+import { useNavigate } from 'react-router';
+
+import type { Hero } from '@/heroes/types/hero.interface';
+
 import { Heart, Eye, Zap, Brain, Gauge, Shield } from 'lucide-react';
 
 import { Badge } from "@/components/ui/badge";
@@ -5,15 +9,22 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Progress } from "@/components/ui/progress";
 
-import type { Hero } from '@/heroes/types/hero.interface';
-
 interface Props {
   hero: Hero
 }
 
 export const HeroGridCard = ({ hero }: Props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/heroes/${hero.slug}`);
+  };
+
   return (
-    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
+    <Card
+      className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50 cursor-pointer"
+      onClick={handleClick}
+    >
       <div className="relative h-64">
         <img
           src={ hero.image }
@@ -117,7 +128,7 @@ export const HeroGridCard = ({ hero }: Props) => {
           <div className="flex flex-wrap gap-1">
             {
               hero.powers.slice(0, 2).map(power => (
-                <Badge variant="outline" className="text-xs">
+                <Badge key={power} variant="outline" className="text-xs">
                   { power }
                 </Badge>
               ))

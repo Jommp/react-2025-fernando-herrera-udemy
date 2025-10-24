@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { useSearchParams } from 'react-router';
 
 import {
   Heart,
@@ -13,11 +14,24 @@ import { CustomPagination } from '@/components/custom/CustomPagination';
 import { CustomBreadcrumb } from '@/components/custom/CustomBreadcrumb';
 import { getHeroesByPage } from '@/heroes/actions/get-heroes-by-page.action';
 
-type Tabs = 'all' | 'favorites' | 'heroes' | 'villains';
-
 export const HomePage = () => {
-  const [currentTab, setCurrentTab] = useState<Tabs>('all');
+  const [searchParams, setSearchParams] = useSearchParams();
   
+  const activeTab = searchParams.get('tab') || 'all';
+
+  const selectedTab = useMemo(() => {
+    const validTabs = ['all', 'favorites', 'heroes', 'villains'];
+
+    return validTabs.includes(activeTab) ? activeTab : 'all';
+  }, [activeTab]);
+
+  const handleTabClick = (tab: string) => {
+    setSearchParams(prev => {
+      prev.set('tab', tab);
+                  
+      return prev;
+    });
+  };
   // useEffect(() => {
   //   getHeroesByPage();
   
@@ -28,8 +42,6 @@ export const HomePage = () => {
     queryFn: () => getHeroesByPage(),
     staleTime: 1000 * 60 * 5 // 5 minutos
   });
-
-  console.log({ heroesResponse });
   
   return (
     <>
@@ -46,11 +58,11 @@ export const HomePage = () => {
         <HeroStats />
 
         {/* Tabs */}
-        <Tabs value={currentTab} className="mb-8">
+        <Tabs value={selectedTab} className="mb-8">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger
               value="all"
-              onClick={() => setCurrentTab('all')}
+              onClick={() => handleTabClick('all')}
             >
               All Characters (16)
             </TabsTrigger>
@@ -58,7 +70,7 @@ export const HomePage = () => {
             <TabsTrigger
               value="favorites"
               className="flex items-center gap-2"
-              onClick={() => setCurrentTab('favorites')}
+              onClick={() => handleTabClick('favorites')}
             >
               <Heart className="h-4 w-4" />
               Favorites (3)
@@ -66,14 +78,14 @@ export const HomePage = () => {
 
             <TabsTrigger
               value="heroes"
-              onClick={() => setCurrentTab('heroes')}
+              onClick={() => handleTabClick('heroes')}
             >
               Heroes (12)
             </TabsTrigger>
 
             <TabsTrigger
               value="villains"
-              onClick={() => setCurrentTab('villains')}
+              onClick={() => handleTabClick('villains')}
             >
               Villains (2)
             </TabsTrigger>

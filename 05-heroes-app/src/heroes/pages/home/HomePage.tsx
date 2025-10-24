@@ -33,6 +33,7 @@ export const HomePage = () => {
     setSearchParams(prev => {
       prev.set('tab', tab);
       prev.set('category', category);
+      prev.set('page', '1');
 
       return prev;
     });

@@ -5,14 +5,16 @@ import { useSearchParams } from 'react-router';
 import {
   Heart,
 } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 import { CustomJumbotron } from '@/components/custom/CustomJumbotron';
 import { HeroesGrid } from '../hero/components/HeroesGrid';
 import { HeroStats } from '@/heroes/components/HeroStats';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CustomPagination } from '@/components/custom/CustomPagination';
 import { CustomBreadcrumb } from '@/components/custom/CustomBreadcrumb';
+
 import { getHeroesByPage } from '@/heroes/actions/get-heroes-by-page.action';
+import { getHeroesSummary } from '@/heroes/actions/get-heroes-summary.action';
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -45,6 +47,12 @@ export const HomePage = () => {
     queryFn: () => getHeroesByPage(+page, +limit),
     staleTime: 1000 * 60 * 5 // 5 minutos
   });
+
+  const { data: summary } = useQuery({
+    queryKey: ['heroes-summary'],
+    queryFn: getHeroesSummary,
+    staleTime: 1000 * 60 * 5 // 5 minutos
+  });
   
   return (
     <>
@@ -67,7 +75,7 @@ export const HomePage = () => {
               value="all"
               onClick={() => handleTabClick('all')}
             >
-              All Characters (16)
+              Todos los personajes ({ summary?.totalHeroes })
             </TabsTrigger>
 
             <TabsTrigger
@@ -83,14 +91,14 @@ export const HomePage = () => {
               value="heroes"
               onClick={() => handleTabClick('heroes')}
             >
-              Heroes (12)
+              Heroes ({ summary?.heroCount })
             </TabsTrigger>
 
             <TabsTrigger
               value="villains"
               onClick={() => handleTabClick('villains')}
             >
-              Villains (2)
+              Villanos ({ summary?.villainCount })
             </TabsTrigger>
           </TabsList>
 

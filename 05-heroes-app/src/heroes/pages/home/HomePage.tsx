@@ -21,6 +21,7 @@ export const HomePage = () => {
   const activeTab = searchParams.get('tab') || 'all';
   const page = searchParams.get('page') || 1;
   const limit = searchParams.get('limit') || 6;
+  const category = searchParams.get('category') || 'all';
 
   const selectedTab = useMemo(() => {
     const validTabs = ['all', 'favorites', 'heroes', 'villains'];
@@ -28,15 +29,16 @@ export const HomePage = () => {
     return validTabs.includes(activeTab) ? activeTab : 'all';
   }, [activeTab]);
 
-  const handleTabClick = (tab: string) => {
+  const handleTabClick = (tab: string, category: string) => {
     setSearchParams(prev => {
       prev.set('tab', tab);
-                  
+      prev.set('category', category);
+
       return prev;
     });
   };
 
-  const { data: heroesResponse } = useHeroesByPage(+page, +limit);
+  const { data: heroesResponse } = useHeroesByPage(+page, +limit, category);
   const { data: summary } = useHeroesSummary();
   
   return (
@@ -58,7 +60,7 @@ export const HomePage = () => {
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger
               value="all"
-              onClick={() => handleTabClick('all')}
+              onClick={() => handleTabClick('all', 'all')}
             >
               Todos los personajes ({ summary?.totalHeroes })
             </TabsTrigger>
@@ -66,7 +68,7 @@ export const HomePage = () => {
             <TabsTrigger
               value="favorites"
               className="flex items-center gap-2"
-              onClick={() => handleTabClick('favorites')}
+              onClick={() => handleTabClick('favorites', 'all')}
             >
               <Heart className="h-4 w-4" />
               Favorites (3)
@@ -74,14 +76,14 @@ export const HomePage = () => {
 
             <TabsTrigger
               value="heroes"
-              onClick={() => handleTabClick('heroes')}
+              onClick={() => handleTabClick('heroes', 'hero')}
             >
               Heroes ({ summary?.heroCount })
             </TabsTrigger>
 
             <TabsTrigger
               value="villains"
-              onClick={() => handleTabClick('villains')}
+              onClick={() => handleTabClick('villains', 'villain')}
             >
               Villanos ({ summary?.villainCount })
             </TabsTrigger>
@@ -102,13 +104,13 @@ export const HomePage = () => {
           <TabsContent value="heroes">
             <h2>Héroes</h2>
 
-            <HeroesGrid />
+            <HeroesGrid heroes={heroesResponse?.heroes} />
           </TabsContent>
 
           <TabsContent value="villains">
             <h2>Villanos</h2>
 
-            <HeroesGrid />
+            <HeroesGrid heroes={heroesResponse?.heroes} />
           </TabsContent>
         </Tabs>
 

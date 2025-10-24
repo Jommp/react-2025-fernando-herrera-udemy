@@ -14,7 +14,7 @@ import { CustomPagination } from '@/components/custom/CustomPagination';
 import { CustomBreadcrumb } from '@/components/custom/CustomBreadcrumb';
 
 import { getHeroesByPage } from '@/heroes/actions/get-heroes-by-page.action';
-import { getHeroesSummary } from '@/heroes/actions/get-heroes-summary.action';
+import { useHeroesSummary } from '@/heroes/hooks/useHeroesSummary';
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -48,11 +48,7 @@ export const HomePage = () => {
     staleTime: 1000 * 60 * 5 // 5 minutos
   });
 
-  const { data: summary } = useQuery({
-    queryKey: ['heroes-summary'],
-    queryFn: getHeroesSummary,
-    staleTime: 1000 * 60 * 5 // 5 minutos
-  });
+  const { data: summary } = useHeroesSummary();
   
   return (
     <>

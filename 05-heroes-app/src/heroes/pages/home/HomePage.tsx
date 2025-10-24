@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router';
 
 import {
@@ -13,8 +12,8 @@ import { HeroStats } from '@/heroes/components/HeroStats';
 import { CustomPagination } from '@/components/custom/CustomPagination';
 import { CustomBreadcrumb } from '@/components/custom/CustomBreadcrumb';
 
-import { getHeroesByPage } from '@/heroes/actions/get-heroes-by-page.action';
 import { useHeroesSummary } from '@/heroes/hooks/useHeroesSummary';
+import { useHeroesByPage } from '@/heroes/hooks/useHeroesByPage';
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,17 +36,7 @@ export const HomePage = () => {
     });
   };
 
-  // useEffect(() => {
-  //   getHeroesByPage();
-  
-  // }, [])
-
-  const { data: heroesResponse } = useQuery({
-    queryKey: ['heroes', { page, limit }],
-    queryFn: () => getHeroesByPage(+page, +limit),
-    staleTime: 1000 * 60 * 5 // 5 minutos
-  });
-
+  const { data: heroesResponse } = useHeroesByPage(+page, +limit);
   const { data: summary } = useHeroesSummary();
   
   return (

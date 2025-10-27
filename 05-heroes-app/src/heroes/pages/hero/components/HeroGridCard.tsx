@@ -1,6 +1,8 @@
+import { use } from 'react';
 import { useNavigate } from 'react-router';
 
 import type { Hero } from '@/heroes/types/hero.interface';
+import { FavoritesContext } from '@/heroes/context/FavoritesContext';
 
 import { Heart, Eye, Zap, Brain, Gauge, Shield } from 'lucide-react';
 
@@ -16,15 +18,14 @@ interface Props {
 export const HeroGridCard = ({ hero }: Props) => {
   const navigate = useNavigate();
 
+  const { isFavorite, toogleFavorite } = use(FavoritesContext);
+
   const handleClick = () => {
     navigate(`/heroes/${hero.slug}`);
   };
 
   return (
-    <Card
-      className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50 cursor-pointer"
-      onClick={handleClick}
-    >
+    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
       <div className="relative h-64">
         <img
           src={ hero.image }
@@ -46,8 +47,16 @@ export const HeroGridCard = ({ hero }: Props) => {
         </Badge>
 
         {/* Favorite button */}
-        <Button size="sm" variant="ghost" className="absolute bottom-3 right-3 bg-white/90 hover:bg-white">
-          <Heart className="h-4 w-4 fill-red-500 text-red-500" />
+        <Button
+          size="sm"
+          variant="ghost"
+          className="absolute bottom-3 right-3 bg-white/90 hover:bg-white"
+          onClick={() => toogleFavorite(hero)}
+        >
+          <Heart className={`h-4 w-4 ${
+              isFavorite(hero) ? "fill-red-500 text-red-500" : "fill-gray-500 text-gray-500"}
+            `}
+          />
         </Button>
 
         {/* View details button */}
@@ -55,6 +64,7 @@ export const HeroGridCard = ({ hero }: Props) => {
           size="sm"
           variant="ghost"
           className="absolute bottom-3 left-3 bg-white/90 hover:bg-white opacity-0 group-hover:opacity-100 transition-opacity"
+          onClick={handleClick}
         >
           <Eye className="h-4 w-4 text-gray-600" />
         </Button>

@@ -4,10 +4,19 @@ import { Badge } from '@/components/ui/badge';
 import { HeroStatCard } from './HeroStatCard';
 
 import { useHeroesSummary } from '../hooks/useHeroesSummary';
+import { use } from 'react';
+import { FavoritesContext } from '../context/FavoritesContext';
 
 export const HeroStats = () => {
   const { data: summary } = useHeroesSummary();
+  const { favoritesCount } = use(FavoritesContext);
   
+  const favoritesPercentage = () => {
+    const totalHeroes = summary?.totalHeroes ?? 0;
+
+    return favoritesCount * 100 / totalHeroes;
+  };
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
       <HeroStatCard
@@ -32,8 +41,12 @@ export const HeroStats = () => {
         title="Favoritos"
         icon={<Heart className="h-4 w-4 text-muted-foreground" />}
       >
-        <div className="text-2xl font-bold text-red-600">3</div>
-        <p className="text-xs text-muted-foreground">18.8% of total</p>
+        <div className="text-2xl font-bold text-red-600">
+          { favoritesCount }
+        </div>
+        <p className="text-xs text-muted-foreground">
+          { favoritesPercentage() }% del total
+        </p>
       </HeroStatCard>
 
       <HeroStatCard

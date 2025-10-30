@@ -16,12 +16,35 @@ export const SearchControls = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const displayFilters = searchParams.get('display-filters') ?? '';
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key !== 'Enter') return;
 
     const value = inputRef.current?.value ?? '';
+
     setSearchParams(prev => {
       prev.set('name', value);
+
+      return prev;
+    });
+  };
+
+  const handleDisplayFilters = () => {
+    const parameterExists = displayFilters ?? '';
+
+    if (parameterExists) {
+      setSearchParams(prev => {
+        prev.delete('display-filters');
+
+        return prev;
+      });
+
+      return;
+    }
+
+    setSearchParams(prev => {
+      prev.set('display-filters', 'display-filters');
 
       return prev;
     });
@@ -45,17 +68,21 @@ export const SearchControls = () => {
 
         {/* Action buttons */}
         <div className="flex gap-2">
-          <Button variant="outline" className="h-12 bg-transparent">
+          <Button
+            variant="outline"
+            className="h-12"
+            onClick={handleDisplayFilters}
+          >
             <Filter className="h-4 w-4 mr-2" />
             Filtros
           </Button>
 
-          <Button variant="outline" className="h-12 bg-transparent">
+          <Button variant="outline" className="h-12">
             <SortAsc className="h-4 w-4 mr-2" />
             Ordenar por Nombre
           </Button>
 
-          <Button variant="outline" className="h-12 bg-transparent">
+          <Button variant="outline" className="h-12">
             <Grid className="h-4 w-4" />
           </Button>
 
@@ -68,8 +95,8 @@ export const SearchControls = () => {
 
       {/* Advanced Filters */}
 
-      <Accordion type="single" collapsible value="item-1">
-        <AccordionItem value="item-1">
+      <Accordion type="single" collapsible value={displayFilters}>
+        <AccordionItem value="display-filters">
           <AccordionContent>
             <div className="bg-white rounded-lg p-6 mb-8 shadow-sm border">
               <div className="flex justify-between items-center mb-4">

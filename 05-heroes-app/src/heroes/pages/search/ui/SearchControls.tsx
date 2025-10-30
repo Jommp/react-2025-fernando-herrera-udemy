@@ -18,6 +18,7 @@ export const SearchControls = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const displayFilters = searchParams.get('display-filters') ?? '';
+  const selectedStrength = searchParams.get('strength') ?? '0';
 
   const handleDeleteSearchParams = (key: string) => {
     setSearchParams(prev => {
@@ -53,6 +54,10 @@ export const SearchControls = () => {
     }
 
     handleSetSearchParams('display-filters', 'display-filters');
+  };
+
+  const handleStrengthChange = (value: number) => {
+    handleSetSearchParams('strength', value.toString());
   };
 
   return (
@@ -140,8 +145,16 @@ export const SearchControls = () => {
               </div>
 
               <div className="mt-4">
-                <label className="text-sm font-medium">Minimo de fuerza: 0/10</label>
-                <Slider defaultValue={[5]} max={10} step={1} />
+                <label className="text-sm font-medium">
+                  Minimo de fuerza: {selectedStrength}/10
+                </label>
+
+                <Slider
+                  defaultValue={[+selectedStrength]}
+                  max={10}
+                  step={1}
+                  onValueChange={(value) => handleStrengthChange(value[0])}
+                />
               </div>
             </div>
           </AccordionContent>

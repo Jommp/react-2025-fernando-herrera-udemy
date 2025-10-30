@@ -12,42 +12,47 @@ import {
   AccordionItem
 } from "@/components/ui/accordion"
 
+
 export const SearchControls = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const displayFilters = searchParams.get('display-filters') ?? '';
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key !== 'Enter') return;
-
-    const value = inputRef.current?.value ?? '';
-
+  const handleDeleteSearchParams = (key: string) => {
     setSearchParams(prev => {
-      prev.set('name', value);
+      prev.delete(key);
 
       return prev;
     });
   };
 
-  const handleDisplayFilters = () => {
+  const handleSetSearchParams = (key: string, value: string) => {
+    setSearchParams(prev => {
+      prev.set(key, value);
+
+      return prev;
+    });
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key !== 'Enter') return;
+
+    const value = inputRef.current?.value ?? '';
+
+    handleSetSearchParams('name', value);
+  };
+
+  const handleDisplayFilters = (): void => {
     const parameterExists = displayFilters ?? '';
 
     if (parameterExists) {
-      setSearchParams(prev => {
-        prev.delete('display-filters');
-
-        return prev;
-      });
+      handleDeleteSearchParams('display-filters');
 
       return;
     }
 
-    setSearchParams(prev => {
-      prev.set('display-filters', 'display-filters');
-
-      return prev;
-    });
+    handleSetSearchParams('display-filters', 'display-filters');
   };
 
   return (

@@ -12,11 +12,12 @@ import { SearchControls } from './ui/SearchControls';
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();
 
-  const name = searchParams.get('name') || '';
+  const name = searchParams.get('name') ?? undefined;
+  const strength = searchParams.get('strength') ?? undefined;
 
   const { data: heroes } = useQuery({
-    queryKey: ['heroes-search', { name }],
-    queryFn: () => searchHeroes({ name }),
+    queryKey: ['heroes-search', { name, strength }],
+    queryFn: () => searchHeroes({ name, strength }),
     staleTime: 1000 * 60 * 5 // 5 minutos
   });
 

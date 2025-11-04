@@ -1,10 +1,11 @@
+import type { PropsWithChildren } from 'react';
 import { describe, expect, test, vi } from 'vitest';
 import { renderHook, waitFor } from '@testing-library/react';
-import { useHeroesSummary } from './useHeroesSummary';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import type { PropsWithChildren } from 'react';
-import { getHeroesSummaryAction } from '../actions/get-heroes-summary.action';
+
 import type { HeroesSummaryResponse } from '../types/get-heroes-summary.response';
+import { getHeroesSummaryAction } from '../actions/get-heroes-summary.action';
+import { useHeroesSummary } from './useHeroesSummary';
 
 vi.mock('../actions/get-heroes-summary.action', () => ({
   getHeroesSummaryAction: vi.fn(),

@@ -8,7 +8,7 @@ interface FavoritesContext {
 
   // Methods
   isFavorite: (hero: Hero) => boolean;
-  toogleFavorite: (hero: Hero) => void;
+  toggleFavorite: (hero: Hero) => void;
 }
 
 export const FavoritesContext = createContext({} as FavoritesContext);
@@ -53,7 +53,7 @@ export const FavoritesContextProvider = ({ children }: PropsWithChildren) => {
         favoritesCount: favorites.length,
         // Methods
         isFavorite: isFavorite,
-        toogleFavorite: toggleFavorite
+        toggleFavorite: toggleFavorite
       }}
     >
       { children }

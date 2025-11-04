@@ -18,7 +18,7 @@ interface Props {
 export const HeroGridCard = ({ hero }: Props) => {
   const navigate = useNavigate();
 
-  const { isFavorite, toogleFavorite } = use(FavoritesContext);
+  const { isFavorite, toggleFavorite } = use(FavoritesContext);
 
   const handleClick = () => {
     navigate(`/heroes/${hero.slug}`);
@@ -51,7 +51,7 @@ export const HeroGridCard = ({ hero }: Props) => {
           size="sm"
           variant="ghost"
           className="absolute bottom-3 right-3 bg-white/90 hover:bg-white"
-          onClick={() => toogleFavorite(hero)}
+          onClick={() => toggleFavorite(hero)}
         >
           <Heart className={`h-4 w-4 ${
               isFavorite(hero) ? "fill-red-500 text-red-500" : "fill-gray-500 text-gray-500"}

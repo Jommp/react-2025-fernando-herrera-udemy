@@ -1,10 +1,11 @@
-import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import { HomePage } from './HomePage';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import { useHeroesByPage } from '@/heroes/hooks/useHeroesByPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { FavoritesContextProvider } from '@/heroes/context/FavoritesContext';
+import { useHeroesByPage } from '@/heroes/hooks/useHeroesByPage';
+import { HomePage } from './HomePage';
 
 vi.mock('@/heroes/hooks/useHeroesByPage');
 

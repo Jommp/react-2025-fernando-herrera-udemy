@@ -12,7 +12,6 @@ import {
   AccordionItem
 } from "@/components/ui/accordion"
 
-
 export const SearchControls = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -105,7 +104,12 @@ export const SearchControls = () => {
 
       {/* Advanced Filters */}
 
-      <Accordion type="single" collapsible value={displayFilters}>
+      <Accordion
+        data-testid="accordion"
+        type="single"
+        collapsible
+        value={displayFilters}
+      >
         <AccordionItem value="display-filters">
           <AccordionContent>
             <div className="bg-white rounded-lg p-6 mb-8 shadow-sm border">

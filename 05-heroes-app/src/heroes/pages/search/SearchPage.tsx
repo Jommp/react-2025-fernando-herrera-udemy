@@ -9,7 +9,7 @@ import { CustomBreadcrumb } from '@/components/custom/CustomBreadcrumb';
 import { HeroesGrid } from '../hero/components/HeroesGrid';
 import { SearchControls } from './ui/SearchControls';
 
-export const SearchPage = () => {
+const SearchPage = () => {
   const [searchParams] = useSearchParams();
 
   const name = searchParams.get('name') ?? undefined;
@@ -38,3 +38,5 @@ export const SearchPage = () => {
     </>
   );
 };
+
+export default SearchPage;

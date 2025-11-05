@@ -1,10 +1,11 @@
-import { render, screen } from '@testing-library/react';
 import { describe, expect, test, vi } from 'vitest';
-import { HeroStats } from './HeroStats';
+import { render, screen } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useHeroesSummary } from '../hooks/useHeroesSummary';
+
 import type { HeroesSummaryResponse } from '../types/get-heroes-summary.response';
+import { HeroStats } from './HeroStats';
 import { FavoritesContextProvider } from '../context/FavoritesContext';
+import { useHeroesSummary } from '../hooks/useHeroesSummary';
 
 vi.mock('../hooks/useHeroesSummary');
 

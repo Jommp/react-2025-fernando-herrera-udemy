@@ -7,14 +7,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
-import { getHero } from '@/heroes/actions/get-hero.action';
+import { getHeroAction } from '@/heroes/actions/get-hero.action';
 
 export const HeroPage = () => {
   const { slug = '' } = useParams();
 
   const { data: superheroData, isError } = useQuery({
     queryKey: ['hero', { slug }],
-    queryFn: () => getHero(slug),
+    queryFn: () => getHeroAction(slug),
     staleTime: 1000 * 60 * 5, // 5 minutos,
     retry: false
   });

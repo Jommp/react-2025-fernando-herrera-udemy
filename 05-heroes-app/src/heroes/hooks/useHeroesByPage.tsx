@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getHeroesByPage } from '../actions/get-heroes-by-page.action';
+import { getHeroesByPageAction } from '../actions/get-heroes-by-page.action';
 
 export const useHeroesByPage = (
   page: number,
@@ -9,7 +9,7 @@ export const useHeroesByPage = (
 ) => {
   return useQuery({
     queryKey: ['heroes', { page, limit, category }],
-    queryFn: () => getHeroesByPage(page, limit, category),
+    queryFn: () => getHeroesByPageAction(page, limit, category),
     staleTime: 1000 * 60 * 5 // 5 minutos
   });
 };

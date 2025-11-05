@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { use, useMemo } from 'react';
 import { useSearchParams } from 'react-router';
 
 import {
@@ -14,10 +14,12 @@ import { CustomBreadcrumb } from '@/components/custom/CustomBreadcrumb';
 
 import { useHeroesSummary } from '@/heroes/hooks/useHeroesSummary';
 import { useHeroesByPage } from '@/heroes/hooks/useHeroesByPage';
+import { FavoritesContext } from '@/heroes/context/FavoritesContext';
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  
+  const { favoritesCount, favorites } = use(FavoritesContext);
+
   const activeTab = searchParams.get('tab') || 'all';
   const page = searchParams.get('page') || 1;
   const limit = searchParams.get('limit') || 6;
@@ -72,7 +74,7 @@ export const HomePage = () => {
               onClick={() => handleTabClick('favorites', 'all')}
             >
               <Heart className="h-4 w-4" />
-              Favorites (3)
+              Favorites ({favoritesCount})
             </TabsTrigger>
 
             <TabsTrigger
@@ -99,7 +101,7 @@ export const HomePage = () => {
           <TabsContent value="favorites">
             <h2>Favoritos</h2>
 
-            <HeroesGrid />
+            <HeroesGrid heroes={favorites} />
           </TabsContent>
 
           <TabsContent value="heroes">
@@ -116,7 +118,11 @@ export const HomePage = () => {
         </Tabs>
 
         {/* Pagination */}
-        <CustomPagination totalPages={ heroesResponse?.pages || 0 } />
+        {
+          selectedTab !== 'favorites' && (
+            <CustomPagination totalPages={ heroesResponse?.pages || 0 } />
+          )
+        }
       </>
     </>
   );

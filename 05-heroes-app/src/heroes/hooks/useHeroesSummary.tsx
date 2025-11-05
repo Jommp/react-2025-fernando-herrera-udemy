@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { getHeroesSummary } from '../actions/get-heroes-summary.action';
+import { getHeroesSummaryAction } from '../actions/get-heroes-summary.action';
 
 export const useHeroesSummary = () => {
   return useQuery({
     queryKey: ['heroes-summary'],
-    queryFn: getHeroesSummary,
+    queryFn: getHeroesSummaryAction,
     staleTime: 1000 * 60 * 5 // 5 minutos
   });
 };

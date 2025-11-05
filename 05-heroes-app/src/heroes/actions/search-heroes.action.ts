@@ -12,7 +12,7 @@ interface Params {
   strength?: string;
 }
 
-export const searchHeroes = async (params: Params): Promise<Hero[]> => {
+export const searchHeroesAction = async (params: Params): Promise<Hero[]> => {
   const {
     name,
     team,

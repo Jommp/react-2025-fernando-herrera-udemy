@@ -14,6 +14,10 @@ vi.mock('@/components/custom/CustomJumbotron', () => ({
   CustomJumbotron: () => <div data-testid="custom-jumbotron"></div>
 }));
 
+vi.mock('./ui/SearchControls', () => ({
+  SearchControls: () => <div data-testid="search-controls"></div>
+}));
+
 vi.mock('@/heroes/pages/hero/components/HeroesGrid', () => ({
   HeroesGrid: ({ heroes }: { heroes: Hero[] }) => (
     <div data-testid="hero-grid">

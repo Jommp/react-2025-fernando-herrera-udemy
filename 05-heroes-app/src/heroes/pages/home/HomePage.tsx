@@ -4,10 +4,9 @@ import { useSearchParams } from 'react-router';
 import {
   Heart,
 } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { CustomJumbotron } from '@/components/custom/CustomJumbotron';
-import { HeroesGrid } from '../hero/components/HeroesGrid';
 import { HeroStats } from '@/heroes/components/HeroStats';
 import { CustomPagination } from '@/components/custom/CustomPagination';
 import { CustomBreadcrumb } from '@/components/custom/CustomBreadcrumb';
@@ -15,6 +14,7 @@ import { CustomBreadcrumb } from '@/components/custom/CustomBreadcrumb';
 import { useHeroesSummary } from '@/heroes/hooks/useHeroesSummary';
 import { useHeroesByPage } from '@/heroes/hooks/useHeroesByPage';
 import { FavoritesContext } from '@/heroes/context/FavoritesContext';
+import { CustomTabsContent } from '@/components/custom/CustomTabsContent';
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,6 +44,10 @@ export const HomePage = () => {
   const { data: heroesResponse } = useHeroesByPage(+page, +limit, category);
   const { data: summary } = useHeroesSummary();
   
+  if (!heroesResponse) {
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <>
@@ -60,7 +64,7 @@ export const HomePage = () => {
 
         {/* Tabs */}
         <Tabs value={selectedTab} className="mb-8">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="d-flex flex-wrap gap-2">
             <TabsTrigger
               value="all"
               onClick={() => handleTabClick('all', 'all')}
@@ -92,29 +96,29 @@ export const HomePage = () => {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="all">
-            <h2>Todos</h2>
+          <CustomTabsContent
+            value="all"
+            title="Todos"
+            heroes={heroesResponse?.heroes}
+          />
 
-            <HeroesGrid heroes={heroesResponse?.heroes} />
-          </TabsContent>
+          <CustomTabsContent
+            value="favorites"
+            title="Favoritos"
+            heroes={favorites}
+          />
 
-          <TabsContent value="favorites">
-            <h2>Favoritos</h2>
+          <CustomTabsContent
+            value="heroes"
+            title="Héroes"
+            heroes={heroesResponse?.heroes}
+          />
 
-            <HeroesGrid heroes={favorites} />
-          </TabsContent>
-
-          <TabsContent value="heroes">
-            <h2>Héroes</h2>
-
-            <HeroesGrid heroes={heroesResponse?.heroes} />
-          </TabsContent>
-
-          <TabsContent value="villains">
-            <h2>Villanos</h2>
-
-            <HeroesGrid heroes={heroesResponse?.heroes} />
-          </TabsContent>
+          <CustomTabsContent
+            value="villains"
+            title="Villanos"
+            heroes={heroesResponse?.heroes}
+          />
         </Tabs>
 
         {/* Pagination */}

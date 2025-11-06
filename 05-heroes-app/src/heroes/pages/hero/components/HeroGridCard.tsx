@@ -63,7 +63,7 @@ export const HeroGridCard = ({ hero }: Props) => {
         <Button
           size="sm"
           variant="ghost"
-          className="absolute bottom-3 left-3 bg-white/90 hover:bg-white opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute bottom-3 left-3 bg-white/90 hover:bg-white"
           onClick={handleClick}
         >
           <Eye className="h-4 w-4 text-gray-600" />

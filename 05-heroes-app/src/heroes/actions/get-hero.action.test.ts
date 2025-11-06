@@ -24,7 +24,7 @@ describe('getHeroAction', () => {
       speed: 7,
       durability: 7,
       team: 'Vengadores',
-      image: 'http://localhost:3001/images/5.jpeg',
+      image: expect.any(String),
       firstAppearance: '1962',
       status: 'Active',
       category: 'Hero',

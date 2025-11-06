@@ -66,15 +66,20 @@ VITE_API_BASE_URL=http://localhost:3000/api
 - Backend service runing locally or remotely
 
 ## Setup Steps
-# 1. Clone the repository
+1. Clone the repository
+```bash
 git clone https://github.com/Jommp/react-2025-fernando-herrera-udemy/tree/main/05-heroes-app
+
 cd 05-heroes-app
+```
 
-# 2. Create and configure your .env file
-# Refer to the environment variable section above
+2. Create and configure your .env file
+**Refer to the environment variable section above**
 
-# 3. Install dependencies
-# Using Bun (recommended)
+3. Install dependencies
+
+```bash
+#Using Bun (recommended)
 bun install
 
 # Or using npm
@@ -82,8 +87,11 @@ npm install
 
 # Or using Yarn
 yarn install
+```
 
-# 4. Run the development server
+4. Run the development server
+
+```bash
 # Using Bun
 bun run dev
 
@@ -92,6 +100,7 @@ npm run dev
 
 # Or Yarn
 yarn dev
+```
 
 The application will be available at:
 http://localhost:5173
@@ -100,6 +109,7 @@ http://localhost:5173
 
 ## 🧪 Running Tests
 
+```bash
 # Using Bun
 bun test
 
@@ -108,14 +118,15 @@ npm run test
 
 # Using Yarn
 yarn test
+```
 
 ---
 
 ## 👤 Author
 
-José María Martínez (Chema)
-GitHub: https://github.com/Jommp
-LinkedIn: https://www.linkedin.com/in/jommp/
+- José María Martínez (Chema)
+- GitHub: https://github.com/Jommp
+- LinkedIn: https://www.linkedin.com/in/jommp/
 
 Course Reference: React: De cero a experto - Edición 2025 - Fernando Herrera
 Made with ❤️, React, and TypeScript.

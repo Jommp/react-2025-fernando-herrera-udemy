@@ -24,7 +24,7 @@ export const CustomPagination = ({ totalPages }: Props) => {
   };
 
   return (
-    <div className="flex items-center justify-center space-x-2">
+    <div className="flex flex-wrap items-center justify-center space-x-2 gap-y-4">
       <Button
         variant="outline"
         size="sm"

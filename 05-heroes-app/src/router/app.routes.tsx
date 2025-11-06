@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { createBrowserRouter, Navigate } from 'react-router';
+import { createHashRouter, Navigate } from 'react-router';
 
 import { HeroesLayout } from '@/heroes/layouts/HeroesLayout';
 import { HomePage } from '../heroes/pages/home/HomePage';
@@ -11,7 +11,9 @@ import { AdminLayout } from '@/admin/layouts/AdminLayout';
 // import { AdminPage } from '@/admin/pages/AdminPage';
 const AdminPage = lazy(() => import('@/admin/pages/AdminPage'));
 
-export const appRoutes = createBrowserRouter([
+
+// export const appRoutes = createBrowserRouter([
+export const appRoutes = createHashRouter([
   {
     path: '/',
     element: <HeroesLayout />,

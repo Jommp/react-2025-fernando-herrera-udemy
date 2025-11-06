@@ -48,6 +48,7 @@ Create a `.env` file in the project root and define:
 
 ```env
 VITE_API_BASE_URL=<YOUR_BACKEND_BASE_URL>
+```
 
 Example
 VITE_API_BASE_URL=http://localhost:3000/api

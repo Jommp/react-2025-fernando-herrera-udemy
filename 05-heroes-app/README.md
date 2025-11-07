@@ -128,5 +128,7 @@ yarn test
 - GitHub: https://github.com/Jommp
 - LinkedIn: https://www.linkedin.com/in/jommp/
 
-Course Reference: React: De cero a experto - Edición 2025 - Fernando Herrera
-Made with ❤️, React, and TypeScript.
+*Course Reference: React: De cero a experto - Edición 2025 - Fernando Herrera*  
+<div align="center">
+  Made with ❤️, React, and TypeScript.
+</div>

@@ -1,7 +1,12 @@
+import { Outlet } from 'react-router';
 
 const AdminLayout = () => {
   return (
-    <div>AdminLayout</div>
+    <div>
+      <h1>AdminLayout</h1>
+
+      <Outlet />
+    </div>
   );
 };
 

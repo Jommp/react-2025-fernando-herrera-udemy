@@ -1,7 +1,12 @@
+import { Outlet } from 'react-router';
 
 const AuthLayout = () => {
   return (
-    <div>AuthLayout</div>
+    <div>
+      <h1>AuthLayout</h1>
+
+      <Outlet />
+    </div>
   );
 };
 

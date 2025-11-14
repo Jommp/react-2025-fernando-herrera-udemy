@@ -129,7 +129,7 @@ exports[`HomePage > should render HomePage with default values 1`] = `
           class="text-2xl font-bold"
         />
         <div
-          class="flex gap-1 mt-2"
+          class="flex flex-wrap gap-1 mt-2"
         >
           <span
             class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90 text-xs"
@@ -315,7 +315,7 @@ exports[`HomePage > should render HomePage with default values 1`] = `
   >
     <div
       aria-orientation="horizontal"
-      class="bg-muted text-muted-foreground h-9 items-center justify-center rounded-lg p-[3px] grid w-full grid-cols-4"
+      class="bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px] d-flex flex-wrap gap-2"
       data-orientation="horizontal"
       data-slot="tabs-list"
       role="tablist"
@@ -407,7 +407,7 @@ exports[`HomePage > should render HomePage with default values 1`] = `
     </div>
     <div
       aria-labelledby="radix-_r_0_-trigger-all"
-      class="flex-1 outline-none"
+      class="flex-1 outline-none mt-8 sm:mt-2"
       data-orientation="horizontal"
       data-slot="tabs-content"
       data-state="active"
@@ -416,7 +416,9 @@ exports[`HomePage > should render HomePage with default values 1`] = `
       style="animation-duration: 0s;"
       tabindex="0"
     >
-      <h2>
+      <h2
+        class="text-xl font-bold text-gray-800 mb-4"
+      >
         Todos
       </h2>
       <div
@@ -425,7 +427,7 @@ exports[`HomePage > should render HomePage with default values 1`] = `
     </div>
     <div
       aria-labelledby="radix-_r_0_-trigger-favorites"
-      class="flex-1 outline-none"
+      class="flex-1 outline-none mt-8 sm:mt-2"
       data-orientation="horizontal"
       data-slot="tabs-content"
       data-state="inactive"
@@ -436,7 +438,7 @@ exports[`HomePage > should render HomePage with default values 1`] = `
     />
     <div
       aria-labelledby="radix-_r_0_-trigger-heroes"
-      class="flex-1 outline-none"
+      class="flex-1 outline-none mt-8 sm:mt-2"
       data-orientation="horizontal"
       data-slot="tabs-content"
       data-state="inactive"
@@ -447,7 +449,7 @@ exports[`HomePage > should render HomePage with default values 1`] = `
     />
     <div
       aria-labelledby="radix-_r_0_-trigger-villains"
-      class="flex-1 outline-none"
+      class="flex-1 outline-none mt-8 sm:mt-2"
       data-orientation="horizontal"
       data-slot="tabs-content"
       data-state="inactive"
@@ -458,7 +460,7 @@ exports[`HomePage > should render HomePage with default values 1`] = `
     />
   </div>
   <div
-    class="flex items-center justify-center space-x-2"
+    class="flex flex-wrap items-center justify-center space-x-2 gap-y-4"
   >
     <button
       class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5"

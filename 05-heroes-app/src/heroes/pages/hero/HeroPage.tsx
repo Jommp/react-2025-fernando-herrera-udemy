@@ -115,7 +115,7 @@ export const HeroPage = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         <Tabs defaultValue="stats" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
+          <TabsList className="flex flex-wrap gap-y-2 mb-10 sm:mb-8">
             <TabsTrigger value="stats" className="flex items-center gap-2">
               <Gauge className="w-4 h-4" />
               Estadísticas

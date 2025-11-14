@@ -27,7 +27,7 @@ export const HeroStats = () => {
           { summary?.totalHeroes }
         </div>
 
-        <div className="flex gap-1 mt-2">
+        <div className="flex flex-wrap gap-1 mt-2">
           <Badge variant="secondary" className="text-xs">
             { summary?.heroCount } Heroes
           </Badge>

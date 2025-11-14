@@ -1,6 +1,9 @@
+import { CustomJumbotron } from '@/shop/components/CustomJumbotron';
 
 export const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>
+      <CustomJumbotron title="Tesla Shop" />
+    </div>
   );
 };
